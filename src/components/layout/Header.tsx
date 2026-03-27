@@ -9,12 +9,10 @@ export default function Header() {
     useEffect(() => {
         const update = () => {
             const now = new Date();
-            const dateStr = now.toLocaleDateString('id-ID', {
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+            const dateStr = `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
             const timeStr = now.toLocaleTimeString('en-US', {
                 hour: '2-digit',
                 minute: '2-digit',
