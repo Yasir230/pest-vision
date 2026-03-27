@@ -24,7 +24,7 @@ export default function DashboardPage() {
       <ParticleBackground />
 
       {/* Main Layout */}
-      <div className="relative z-10">
+      <div className="relative z-10 max-w-[1920px] mx-auto min-h-screen border-x border-[var(--color-border-glass)] shadow-2xl bg-[rgba(5,10,24,0.2)]">
         <Header />
 
         <div className="flex">

@@ -9,14 +9,19 @@ export default function Header() {
     useEffect(() => {
         const update = () => {
             const now = new Date();
-            setTime(
-                now.toLocaleTimeString('en-US', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false,
-                })
-            );
+            const dateStr = now.toLocaleDateString('id-ID', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            const timeStr = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false,
+            });
+            setTime(`${dateStr} • ${timeStr}`);
         };
         update();
         const interval = setInterval(update, 1000);

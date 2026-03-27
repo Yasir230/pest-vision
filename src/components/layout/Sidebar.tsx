@@ -38,12 +38,16 @@ export default function Sidebar() {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="hidden lg:flex flex-col h-[calc(100vh-64px)] border-r border-[var(--color-border-glass)] bg-[rgba(5,10,24,0.6)] backdrop-blur-xl sticky top-16 overflow-hidden"
         >
-            {/* Nav */}
             <nav className="flex-1 py-4 px-2 space-y-1">
                 {navItems.map((item) => (
                     <div
                         key={item.label}
-                        className={`sidebar-link ${item.active ? 'active' : ''}`}
+                        onClick={() => {
+                            if (!item.active) {
+                                alert(`Menu "${item.label}" masih dalam tahap pengembangan (Coming Soon).`);
+                            }
+                        }}
+                        className={`sidebar-link ${item.active ? 'active' : 'opacity-70 hover:opacity-100'}`}
                         title={collapsed ? item.label : undefined}
                     >
                         <item.icon className="w-5 h-5 shrink-0" />
