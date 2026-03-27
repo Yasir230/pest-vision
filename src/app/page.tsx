@@ -23,6 +23,14 @@ export default function DashboardPage() {
     <div className="min-h-screen relative">
       <ParticleBackground />
 
+      {/* Global Notification */}
+      <div
+        id="coming-soon-notify"
+        className="fixed top-20 right-6 z-[60] px-4 py-2 bg-[rgba(8,15,35,0.9)] border border-[rgba(0,229,255,0.3)] rounded-lg text-xs font-medium text-[var(--color-accent-cyan)] shadow-[0_0_20px_rgba(0,229,255,0.1)] opacity-0 transition-opacity pointer-events-none backdrop-blur-md"
+      >
+        Fitur segera hadir!
+      </div>
+
       {/* Main Layout */}
       <div className="relative z-10 max-w-[1920px] mx-auto min-h-screen border-x border-[var(--color-border-glass)] shadow-2xl bg-[rgba(5,10,24,0.2)]">
         <Header />

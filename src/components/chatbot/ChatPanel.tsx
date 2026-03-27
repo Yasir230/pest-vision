@@ -65,7 +65,7 @@ export default function ChatPanel({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 100, scale: 0.95 }}
                     transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                    className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full sm:w-[420px] h-[85vh] sm:h-[600px] sm:rounded-2xl overflow-hidden flex flex-col chat-panel"
+                    className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full sm:w-[420px] h-[85vh] sm:h-[min(600px,calc(100vh-120px))] sm:rounded-2xl overflow-hidden flex flex-col chat-panel shadow-2xl shadow-cyan-900/20"
                 >
                     {/* Header */}
                     <div className="flex items-center justify-between px-5 py-4 border-b border-[rgba(0,229,255,0.1)]">

@@ -44,25 +44,36 @@ export default function Sidebar() {
                         key={item.label}
                         onClick={() => {
                             if (!item.active) {
-                                alert(`Menu "${item.label}" masih dalam tahap pengembangan (Coming Soon).`);
+                                // Subtle notification instead of a harsh alert
+                                const notify = document.getElementById('coming-soon-notify');
+                                if (notify) {
+                                    notify.innerText = `Fitur "${item.label}" segera hadir!`;
+                                    notify.classList.remove('opacity-0');
+                                    setTimeout(() => notify.classList.add('opacity-0'), 3000);
+                                }
                             }
                         }}
-                        className={`sidebar-link ${item.active ? 'active' : 'opacity-70 hover:opacity-100'}`}
-                        title={collapsed ? item.label : undefined}
+                        className={`sidebar-link relative overflow-hidden group ${item.active ? 'active' : 'opacity-50 hover:opacity-80'}`}
+                        title={collapsed ? `${item.label} (Coming Soon)` : undefined}
                     >
-                        <item.icon className="w-5 h-5 shrink-0" />
+                        <item.icon className={`w-5 h-5 shrink-0 ${item.active ? 'text-[var(--color-accent-cyan)]' : 'text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)]'}`} />
                         <AnimatePresence>
                             {!collapsed && (
                                 <motion.span
-                                    initial={{ opacity: 0, width: 0 }}
-                                    animate={{ opacity: 1, width: 'auto' }}
-                                    exit={{ opacity: 0, width: 0 }}
-                                    className="whitespace-nowrap overflow-hidden"
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -10 }}
+                                    className="whitespace-nowrap overflow-hidden text-sm font-medium"
                                 >
                                     {item.label}
                                 </motion.span>
                             )}
                         </AnimatePresence>
+                        {!item.active && !collapsed && (
+                            <div className="absolute top-1/2 -translate-y-1/2 right-4 px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-tighter bg-[var(--color-bg-primary)] border border-[var(--color-border-glass)] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                                Locked
+                            </div>
+                        )}
                     </div>
                 ))}
             </nav>
